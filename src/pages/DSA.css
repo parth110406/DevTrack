@@ -1,0 +1,50 @@
+/* ── Overall progress card ─────────────────────────── */
+
+.dsa-page__progress-card {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-md);
+  padding: var(--space-5);
+  margin-bottom: var(--space-6);
+}
+
+.dsa-page__progress-header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  margin-bottom: var(--space-3);
+}
+
+.dsa-page__progress-label {
+  font-size: var(--text-md);
+  font-weight: 600;
+  color: var(--text-primary);
+  letter-spacing: -0.01em;
+}
+
+.dsa-page__progress-pct {
+  font-size: var(--text-sm);
+  color: var(--accent-text);
+  font-variant-numeric: tabular-nums;
+}
+
+.dsa-page__progress-bar {
+  height: 8px;
+  border-radius: 4px;
+  background: var(--bg-elevated);
+  overflow: hidden;
+  margin-bottom: var(--space-2);
+}
+
+.dsa-page__progress-fill {
+  height: 100%;
+  border-radius: 4px;
+  background: var(--accent);
+  transition: width var(--transition-normal);
+}
+
+.dsa-page__progress-count {
+  font-size: var(--text-sm);
+  color: var(--text-tertiary);
+  font-variant-numeric: tabular-nums;
+}

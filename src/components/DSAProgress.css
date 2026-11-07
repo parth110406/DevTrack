@@ -1,0 +1,297 @@
+/* ── Section shared styles ─────────────────────────── */
+
+.section-header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  margin-bottom: var(--space-5);
+}
+
+.section-title {
+  font-size: var(--text-md);
+  font-weight: 600;
+  color: var(--text-primary);
+  letter-spacing: -0.01em;
+}
+
+.section-meta {
+  font-size: var(--text-sm);
+  color: var(--text-tertiary);
+}
+
+
+/* ── DSA Progress ──────────────────────────────────── */
+
+.dsa-progress {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-md);
+  padding: var(--space-5);
+}
+
+
+/* ── Main DSA progress bar ─────────────────────────── */
+
+.dsa-progress__bar {
+  display: flex;
+
+  width: 100%;
+  height: 8px;
+
+  border-radius: 4px;
+  overflow: hidden;
+
+  background: var(--bg-elevated);
+
+  gap: 1px;
+
+  margin-bottom: var(--space-5);
+}
+
+
+/* Individual main progress segments */
+
+.dsa-progress__segment {
+  height: 100%;
+
+  min-width: 0;
+
+  flex-shrink: 0;
+
+  background-color: var(--accent);
+
+  transform-origin: left center;
+
+  will-change: transform;
+
+  transition:
+    transform 0.12s linear,
+    opacity 0.2s ease;
+}
+
+
+/* ── Category rows ─────────────────────────────────── */
+
+.dsa-progress__list {
+  display: flex;
+  flex-direction: column;
+
+  gap: var(--space-3);
+}
+
+
+.dsa-progress__row {
+  display: flex;
+
+  align-items: center;
+
+  gap: var(--space-3);
+
+  font-size: var(--text-sm);
+
+  min-height: 22px;
+}
+
+
+/* ── Topic dot ─────────────────────────────────────── */
+
+.dsa-progress__dot {
+  width: 8px;
+  height: 8px;
+
+  border-radius: 50%;
+
+  flex-shrink: 0;
+
+  background-color: var(--accent);
+}
+
+
+/* ── Topic name ────────────────────────────────────── */
+
+.dsa-progress__name {
+  color: var(--text-secondary);
+
+  width: 100px;
+
+  flex-shrink: 0;
+
+  white-space: nowrap;
+
+  overflow: hidden;
+
+  text-overflow: ellipsis;
+}
+
+
+/* ── Solved count ──────────────────────────────────── */
+
+.dsa-progress__count {
+  color: var(--text-tertiary);
+
+  width: 48px;
+
+  text-align: right;
+
+  flex-shrink: 0;
+
+  font-variant-numeric: tabular-nums;
+}
+
+
+/* =====================================================
+   TOPIC PROGRESS TRACK
+===================================================== */
+
+.dsa-progress__inline-track {
+  position: relative;
+
+  flex: 1;
+
+  height: 5px;
+
+  min-width: 60px;
+
+  overflow: hidden;
+
+  background: var(--bg-elevated);
+
+  border-radius: 999px;
+}
+
+
+/* =====================================================
+   TOPIC PROGRESS FILL
+===================================================== */
+
+.dsa-progress__inline-fill {
+  position: absolute;
+
+  left: 0;
+  top: 0;
+
+  width: 0;
+  height: 100%;
+
+  border-radius: 999px;
+
+  background-color: var(--accent);
+
+  transform-origin: left center;
+
+  will-change: transform, width, opacity;
+
+  /*
+    Important:
+    JSX controls the animation.
+    CSS only provides the smooth visual rendering.
+  */
+  transition:
+    transform 0.12s linear,
+    opacity 0.2s ease;
+}
+
+
+/* ── Moving shine on topic progress ───────────────── */
+
+.dsa-progress__inline-fill::after {
+  content: '';
+
+  position: absolute;
+
+  top: 0;
+  bottom: 0;
+
+  left: -50%;
+
+  width: 40%;
+
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.25),
+    transparent
+  );
+
+  animation: dsa-progress-shine 1.5s linear infinite;
+}
+
+
+/* ── Percentage ────────────────────────────────────── */
+
+.dsa-progress__pct {
+  color: var(--text-tertiary);
+
+  width: 32px;
+
+  text-align: right;
+
+  flex-shrink: 0;
+
+  font-variant-numeric: tabular-nums;
+}
+
+
+/* =====================================================
+   SHINE ANIMATION
+===================================================== */
+
+@keyframes dsa-progress-shine {
+
+  from {
+    left: -50%;
+  }
+
+  to {
+    left: 120%;
+  }
+
+}
+
+
+/* =====================================================
+   HOVER EFFECT
+===================================================== */
+
+.dsa-progress__row:hover .dsa-progress__inline-fill {
+  filter: brightness(1.15);
+}
+
+.dsa-progress__row:hover .dsa-progress__name {
+  color: var(--text-primary);
+}
+
+
+/* =====================================================
+   REDUCED MOTION
+===================================================== */
+
+@media (prefers-reduced-motion: reduce) {
+
+  .dsa-progress__segment,
+  .dsa-progress__inline-fill {
+    transition: none;
+  }
+
+  .dsa-progress__inline-fill::after {
+    animation: none;
+  }
+
+}
+
+
+/* =====================================================
+   MOBILE
+===================================================== */
+
+@media (max-width: 640px) {
+
+  .dsa-progress__name {
+    width: 80px;
+  }
+
+  .dsa-progress__inline-track {
+    min-width: 40px;
+  }
+
+}

@@ -1,0 +1,185 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+/* ── Reset ─────────────────────────────────────────── */
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+    sans-serif;
+  background-color: var(--bg-base);
+  color: var(--text-primary);
+  line-height: 1.5;
+  min-height: 100vh;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+ul, ol {
+  list-style: none;
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+  border: none;
+  background: none;
+  color: inherit;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+/* ── Design Tokens ─────────────────────────────────── */
+
+:root {
+  /* Backgrounds — deep graphite, not pure black */
+  --bg-base: #141416;
+  --bg-surface: #1b1b1f;
+  --bg-elevated: #222227;
+  --bg-hover: #28282e;
+  --bg-active: #2f2f36;
+
+  /* Borders — subtle graphite structure */
+  --border-default: #2e2e35;
+  --border-subtle: #242429;
+  --border-strong: #3a3a42;
+
+  /* Text — warm off-white primary */
+  --text-primary: #ededef;
+  --text-secondary: #96969e;
+  --text-tertiary: #62626a;
+  --text-inverse: #141416;
+
+  /* Accent — restrained warm amber */
+  --accent: #d4943a;
+  --accent-muted: rgba(212, 148, 58, 0.10);
+  --accent-hover: #c2862f;
+  --accent-text: #d4943a;
+
+  /* Semantic */
+  --color-success: #5cb870;
+  --color-warning: #d4943a;
+  --color-error: #d45454;
+  --color-info: #6b9eff;
+
+  /* Spacing */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-8: 32px;
+  --space-10: 40px;
+  --space-12: 48px;
+
+  /* Radii */
+  --radius-sm: 4px;
+  --radius-md: 6px;
+  --radius-lg: 8px;
+
+  /* Typography sizes */
+  --text-xs: 0.6875rem;   /* 11px */
+  --text-sm: 0.75rem;     /* 12px */
+  --text-base: 0.8125rem; /* 13px */
+  --text-md: 0.875rem;    /* 14px */
+  --text-lg: 1rem;        /* 16px */
+  --text-xl: 1.25rem;     /* 20px */
+
+  /* Layout */
+  --sidebar-width: 240px;
+  --sidebar-collapsed: 56px;
+  --topbar-height: 48px;
+  --content-max-width: 1120px;
+
+  /* Transitions */
+  --transition-fast: 120ms ease;
+  --transition-normal: 200ms ease;
+}
+
+/* ── Scrollbar ─────────────────────────────────────── */
+
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--border-default);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--border-strong);
+}
+
+/* ── Utility ───────────────────────────────────────── */
+
+#root {
+  min-height: 100vh;
+}
+
+/* Optional light theme for Settings. */
+:root[data-theme='light'] {
+  --bg-base: #f5f5f4;
+  --bg-surface: #ffffff;
+  --bg-elevated: #f0f0ee;
+  --bg-hover: #e8e8e5;
+  --bg-active: #dfdfdb;
+  --border-default: #d9d9d3;
+  --border-subtle: #e6e6e1;
+  --border-strong: #c8c8c0;
+  --text-primary: #1d1d1b;
+  --text-secondary: #64645e;
+  --text-tertiary: #8a8a82;
+  --text-inverse: #ffffff;
+}
+/* =========================================
+   PAGE ENTRANCE ANIMATION
+   ========================================= */
+
+.page-entrance {
+  animation: pageEntrance 0.45s ease-out both;
+}
+
+@keyframes pageEntrance {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Respect users who prefer reduced motion */
+
+@media (prefers-reduced-motion: reduce) {
+  .page-entrance {
+    animation: none;
+  }
+}

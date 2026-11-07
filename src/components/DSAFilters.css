@@ -1,0 +1,104 @@
+.dsa-filters {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-md);
+  padding: var(--space-4);
+  display: flex;
+  gap: var(--space-3);
+  align-items: center;
+  margin-bottom: var(--space-4);
+  flex-wrap: wrap;
+}
+
+/* ── Search ────────────────────────────────────────── */
+
+.dsa-filters__search {
+  position: relative;
+  flex: 1;
+  min-width: 200px;
+}
+
+.dsa-filters__search-icon {
+  position: absolute;
+  left: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--text-tertiary);
+  pointer-events: none;
+}
+
+.dsa-filters__input {
+  width: 100%;
+  background: var(--bg-elevated);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-sm);
+  padding: 7px 10px 7px 30px;
+  font-size: var(--text-sm);
+  font-family: inherit;
+  color: var(--text-primary);
+  outline: none;
+  transition: border-color var(--transition-fast);
+}
+
+.dsa-filters__input::placeholder {
+  color: var(--text-tertiary);
+}
+
+.dsa-filters__input:focus {
+  border-color: var(--accent);
+}
+
+/* ── Selects ───────────────────────────────────────── */
+
+.dsa-filters__selects {
+  display: flex;
+  gap: var(--space-3);
+  flex-wrap: wrap;
+}
+
+.dsa-filters__select {
+  background: var(--bg-elevated);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-sm);
+  padding: 7px 28px 7px 10px;
+  font-size: var(--text-sm);
+  font-family: inherit;
+  color: var(--text-secondary);
+  outline: none;
+  cursor: pointer;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg width='10' height='6' viewBox='0 0 10 6' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1L5 5L9 1' stroke='%2396969e' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 8px center;
+  transition: border-color var(--transition-fast);
+}
+
+.dsa-filters__select:focus {
+  border-color: var(--accent);
+}
+
+@media (max-width: 768px) {
+  .dsa-filters {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .dsa-filters__search {
+    min-width: 0;
+  }
+
+  .dsa-filters__selects {
+    width: 100%;
+  }
+
+  .dsa-filters__select {
+    flex: 1;
+    min-width: 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .dsa-filters__selects {
+    flex-direction: column;
+  }
+}
